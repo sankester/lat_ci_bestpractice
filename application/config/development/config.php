@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = '';
+$config['base_url'] = 'http://bestpractice.edu:8080/';
 
 /*
 |--------------------------------------------------------------------------
@@ -324,7 +324,7 @@ $config['cache_query_string'] = FALSE;
 | https://codeigniter.com/user_guide/libraries/encryption.html
 |
 */
-$config['encryption_key'] = '';
+$config['encryption_key'] = 'GH4UY35678FH3792BFIWLOAISh0809AH9hi%^&0(S&aS09scn80(n0cr89q3m080 b7*(&^B9c123no0*';
 
 /*
 |--------------------------------------------------------------------------

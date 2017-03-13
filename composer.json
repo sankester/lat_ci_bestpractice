@@ -1,0 +1,7 @@
+{
+  "require": {
+    "netcarver/textile": "3.6.*",
+    "os/excel-bundle": "2.*",
+    "doctrine/orm": "2.5.*"
+  }
+}

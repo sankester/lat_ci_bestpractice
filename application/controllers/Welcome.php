@@ -1,6 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+
+use Netcarver\Textile;
 class Welcome extends CI_Controller {
 
 	/**
@@ -18,8 +20,26 @@ class Welcome extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+
+	public function __construct()
+	{
+		parent::__construct();
+		$this->ion_auth->login('admin@admin.com','password');
+		if(!$this->ion_auth->logged_in()){
+			redirect('user/login');
+		}
+	}
 	public function index()
 	{
-		$this->load->view('welcome_message');
+		 $data = array('subview' => 'homepage');
+		$this->load->view('layouts/layout', $data );
+//		$parser = new Textile\Parser();
+//
+//		$string = 'h1. Welcome'. PHP_EOL. PHP_EOL;
+//		$string .= '* List Item'. PHP_EOL;
+//		$string .= '* Another List Item'. PHP_EOL;
+//
+//		echo $parser->textileThis($string);
+
 	}
 }
