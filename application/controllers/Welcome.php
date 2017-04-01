@@ -3,7 +3,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 use Netcarver\Textile;
-class Welcome extends CI_Controller {
+
+class Welcome extends MY_Controller
+{
 
 	/**
 	 * Index Page for this controller.
@@ -24,14 +26,20 @@ class Welcome extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->ion_auth->login('admin@admin.com','password');
-		if(!$this->ion_auth->logged_in()){
-			redirect('user/login');
-		}
+
+
 	}
 	public function index()
 	{
-		 $data = array('subview' => 'homepage');
+
+//		$this->benchmark->mark('data_start');
+//		$user = $this->ion_auth->user()->row();
+//		$this->benchmark->mark('data_end');
+
+//		dump($user);
+
+//		$this->output->enable_profiler(ENVIRONMENT  == 'development');
+		$data = array('subview' => 'homepage');
 		$this->load->view('layouts/layout', $data );
 //		$parser = new Textile\Parser();
 //

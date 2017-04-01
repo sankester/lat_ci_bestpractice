@@ -6,7 +6,7 @@
  * Date: 13/03/2017
  * Time: 17:41
  */
-class Questions extends CI_Controller
+class Questions extends MY_Controller
 {
     public function __construct()
     {
