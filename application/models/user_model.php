@@ -9,6 +9,18 @@
 class User_model extends MY_Model
 {
 
+    public $validation = array(
+        array(
+            'field' => 'email',
+            'label' => 'Email',
+            'rules' => 'required|valid_email|trim'
+        ),
+        array(
+            'field' => 'password',
+            'label' => 'Password',
+            'rules' => 'required|trim'
+        )
+    );
     protected $has_many = array('questions', 'answers');
 
     public function __construct()
@@ -17,4 +29,6 @@ class User_model extends MY_Model
 
         $this->_database = $this->db;
     }
+
+
 }

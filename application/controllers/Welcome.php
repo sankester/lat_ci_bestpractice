@@ -39,8 +39,8 @@ class Welcome extends MY_Controller
 //		dump($user);
 
 //		$this->output->enable_profiler(ENVIRONMENT  == 'development');
-		$data = array('subview' => 'homepage');
-		$this->load->view('layouts/layout', $data );
+//		$data = array('subview' => 'homepage');
+//		$this->load->view('layouts/layout', $data );
 //		$parser = new Textile\Parser();
 //
 //		$string = 'h1. Welcome'. PHP_EOL. PHP_EOL;

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: sankester
@@ -8,8 +9,10 @@
 class Users extends MY_Controller
 {
 
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct();
+        $this->load->model('user_model');
     }
 
     public function login()
@@ -19,15 +22,32 @@ class Users extends MY_Controller
 //        $this->ion_auth->login('admin@admin.com','password');
 //        dump($this->ion_auth->user()->row());
 
-        $this->load->model('user_model');
-        $questions = $this->user_model->with('questions')->with('answers')->get(1);
-        dump($questions);
+//        $this->load->model('user_model');
+//        $questions = $this->user_model->with('questions')->with('answers')->get(1);
+//        dump($questions);
+
+        if ($this->ion_auth->logged_in() == true) {
+            redirect('questions/listing');
+        }
+
+        $this->form_validation->set_rules($this->user_model->validation);
+
+        if ($this->form_validation->run() == true) {
+            if ($this->ion_auth->login($this->input->post('email'), $this->input->post('password')) == true) {
+                redirect('questions/listing');
+            }
+        }
+
+        $this->data['error'] = 'We could not log you in';
+
+        $this->load_view('users/login');
     }
 
     public function logout()
     {
         $this->ion_auth->logout();
     }
+
     public function register()
     {
 
@@ -35,7 +55,6 @@ class Users extends MY_Controller
 
     public function data()
     {
-
 
 
     }

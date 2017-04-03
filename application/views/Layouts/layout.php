@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Ask Away</title>
-    <link rel="stylesheet" href="style.css" type="text/css" />
+    <link rel="stylesheet" href="<?php echo site_url('style.css'); ?>" type="text/css"/>
 </head>
 <body>
 <div class="container">

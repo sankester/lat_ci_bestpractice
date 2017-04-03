@@ -8,6 +8,7 @@
  */
 class MY_Controller extends CI_Controller
 {
+    public $data = array();
     public function __construct()
     {
         parent::__construct();
@@ -18,6 +19,7 @@ class MY_Controller extends CI_Controller
         }
 
         $this->output->enable_profiler(ENVIRONMENT == 'development');
+
 //        else {
 //            $group = 'admin';
 ////            if (!$this->ion_auth->in_group($group)) {
@@ -41,5 +43,11 @@ class MY_Controller extends CI_Controller
 //            }
 
 //        }
+    }
+
+    public function load_view($subview)
+    {
+        $this->data['subview'] = $subview;
+        $this->load->view('layouts/layout', $this->data);
     }
 }
