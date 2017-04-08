@@ -35,10 +35,12 @@ class Users extends MY_Controller
         if ($this->form_validation->run() == true) {
             if ($this->ion_auth->login($this->input->post('email'), $this->input->post('password')) == true) {
                 redirect('questions/listing');
+            }else{
+                $this->data['error'] = 'We could not log you in';
+
             }
         }
 
-        $this->data['error'] = 'We could not log you in';
 
         $this->load_view('users/login');
     }
@@ -46,6 +48,7 @@ class Users extends MY_Controller
     public function logout()
     {
         $this->ion_auth->logout();
+        redirect('users/login');
     }
 
     public function register()

@@ -26,6 +26,13 @@ class Questions extends MY_Controller
         $this->db->where('questions_id', $id);
         $this->data['answers'] = $this->answer_model->with('user')->get_all();
 
+        $this->form_validation->set_rules($this->answer_model->validation);
+        $this->form_validation->run();
+        if(count($_POST)){
+            $this->answer_model->insert();
+            redirect($_SERVER['REQUEST_URI'], 'refresh');
+        }
+
         $this->load_view('questions/detail');
     }
 

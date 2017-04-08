@@ -6,6 +6,9 @@
  * Date: 17/03/2017
  * Time: 20:05
  */
+
+use Netcarver\Textile;
+
 class MY_Controller extends CI_Controller
 {
     public $data = array();
@@ -43,6 +46,8 @@ class MY_Controller extends CI_Controller
 //            }
 
 //        }
+
+        $this->parser = new Textile\Parser();
     }
 
     public function load_view($subview)
