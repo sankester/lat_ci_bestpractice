@@ -20,6 +20,8 @@ class MY_Controller extends CI_Controller
         if ($this->ion_auth->logged_in() == false && !in_array(uri_string(), $no_redirect)) {
             redirect('users/login');
         }
+        $this->parser = new Textile\Parser();
+        $this->load->driver('cache', array('adapter' => 'file'));
 
         $this->output->enable_profiler(ENVIRONMENT == 'development');
 
@@ -47,7 +49,7 @@ class MY_Controller extends CI_Controller
 
 //        }
 
-        $this->parser = new Textile\Parser();
+
     }
 
     public function load_view($subview)
