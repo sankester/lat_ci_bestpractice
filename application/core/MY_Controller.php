@@ -21,9 +21,13 @@ class MY_Controller extends CI_Controller
             redirect('users/login');
         }
         $this->parser = new Textile\Parser();
-        $this->load->driver('cache', array('adapter' => 'file'));
+
+        $this->load->library('zf_cache');
+        $this->zf_cache = $this->zf_cache->get_instance();
 
         $this->output->enable_profiler(ENVIRONMENT == 'development');
+
+
 
 //        else {
 //            $group = 'admin';

@@ -23,7 +23,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://bestpractice.edu:8080/';
+
+$allowed_domains = array('bestpractice.edu:8080');
+$default_domain  = 'bestpractice.edu';
+
+if (in_array($_SERVER['HTTP_HOST'], $allowed_domains, TRUE))
+{
+    $domain = $_SERVER['HTTP_HOST'];
+}
+else
+{
+    $domain = $default_domain;
+}
+
+if ( ! empty($_SERVER['HTTPS']))
+{
+    $config['base_url'] = 'https://'.$domain;
+}
+else
+{
+    $config['base_url'] = 'http://'.$domain;
+}
+
 
 /*
 |--------------------------------------------------------------------------
@@ -448,12 +469,14 @@ $config['global_xss_filtering'] = FALSE;
 | 'csrf_regenerate' = Regenerate token on every submission
 | 'csrf_exclude_uris' = Array of URIs which ignore CSRF checks
 */
-$config['csrf_protection'] = FALSE;
+$config['csrf_protection'] = TRUE;
 $config['csrf_token_name'] = 'csrf_test_name';
-$config['csrf_cookie_name'] = 'csrf_cookie_name';
+$config['csrf_cookie_name'] = 'csrfcookiename';
 $config['csrf_expire'] = 7200;
 $config['csrf_regenerate'] = TRUE;
 $config['csrf_exclude_uris'] = array();
+
+
 
 /*
 |--------------------------------------------------------------------------
