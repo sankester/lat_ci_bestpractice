@@ -56,8 +56,9 @@ require '../vendor/autoload.php';
  * NOTE: If you change these, also change the error_reporting() code below
  */
 
-	switch($_SERVER['HTTP_HOST']){
-		case 'bestpractice.edu:8080':
+$root = dirname(__FILE__);
+switch ($root) {
+	case 'C:\xampp\htdocs\ci_bestpractice\bestpractice':
 			$env = 'development';
 			break;
 		default:
