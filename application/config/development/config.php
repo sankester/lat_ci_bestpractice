@@ -31,22 +31,20 @@ $config['modules_locations'] = array(
 $allowed_domains = array('bestpractice.edu:8080');
 $default_domain  = 'bestpractice.edu';
 
-if (in_array($_SERVER['HTTP_HOST'], $allowed_domains, TRUE))
-{
-    $domain = $_SERVER['HTTP_HOST'];
-}
-else
-{
-    $domain = $default_domain;
-}
+if (isset($_SERVER['HTTP_HOST'])) {
+    if (in_array($_SERVER['HTTP_HOST'], $allowed_domains, TRUE)) {
+        $domain = $_SERVER['HTTP_HOST'];
+    } else {
+        $domain = $default_domain;
+    }
 
-if ( ! empty($_SERVER['HTTPS']))
-{
-    $config['base_url'] = 'https://'.$domain;
-}
-else
-{
-    $config['base_url'] = 'http://'.$domain;
+    if (!empty($_SERVER['HTTPS'])) {
+        $config['base_url'] = 'https://' . $domain;
+    } else {
+        $config['base_url'] = 'http://' . $domain;
+    }
+} else {
+    $config['base_url'] = 'http://' . $default_domain;
 }
 
 
